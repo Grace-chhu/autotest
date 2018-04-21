@@ -30,7 +30,7 @@ class _InputDict(dict):
 
     @classmethod
     def remove_unspecified_fields(cls, field_dict):
-        return dict((key, value) for key, value in field_dict.iteritems()
+        return dict((key, value) for key, value in field_dict.items()
                     if value is not _NO_VALUE_SPECIFIED)
 
 
@@ -489,19 +489,19 @@ class Relationship(Entry):
     def from_uri_args(cls, request, **kwargs):
         # kwargs contains URI args for each entry
         entries = {}
-        for name, entry_class in cls.related_classes.iteritems():
+        for name, entry_class in cls.related_classes.items():
             entries[name] = entry_class.from_uri_args(request, **kwargs)
         return cls(**entries)
 
     def _uri_args(self):
         kwargs = {}
-        for name, entry in self.entries.iteritems():
+        for name, entry in self.entries.items():
             kwargs.update(entry._uri_args())
         return kwargs
 
     def short_representation(self):
         rep = self.link()
-        for name, entry in self.entries.iteritems():
+        for name, entry in self.entries.items():
             rep[name] = entry.short_representation()
         return rep
 
@@ -595,7 +595,7 @@ class RelationshipCollection(Collection):
     def _query_parameters_accepted(self):
         return [(name, 'Show relationships for this %s' % entry_class.__name__)
                 for name, entry_class
-                in self.related_classes.iteritems()]
+                in self.related_classes.items()]
 
     def _resolve_query_param(self, name, uri_arg):
         entry_class = self.related_classes[name]

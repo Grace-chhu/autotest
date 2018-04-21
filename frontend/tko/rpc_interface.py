@@ -181,7 +181,7 @@ def _format_iteration_keyvals(test):
     # merge the iterations into a single list of attr & perf dicts
     return [{'attr': iteration_attr.get(index, {}),
              'perf': iteration_perf.get(index, {})}
-            for index in xrange(1, max_iterations + 1)]
+            for index in range(1, max_iterations + 1)]
 
 
 def _job_keyvals_to_dict(keyvals):
@@ -404,7 +404,7 @@ def get_static_data():
                     for field in models.TestView._meta.fields]
     extra_fields = [(field_name.capitalize(), field_sql)
                     for field_sql, field_name
-                    in models.TestView.extra_fields.iteritems()]
+                    in models.TestView.extra_fields.items()]
 
     benchmark_key = {
         'kernbench': 'elapsed',
