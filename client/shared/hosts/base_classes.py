@@ -15,7 +15,7 @@ poirier@google.com (Benjamin Poirier),
 stutsman@google.com (Ryan Stutsman)
 """
 
-import cPickle
+import _pickle as cPickle
 import cStringIO
 import logging
 import os

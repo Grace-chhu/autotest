@@ -3,7 +3,7 @@
 # This file contains the classes used for the known kernel versions persistent
 # storage
 
-import cPickle
+import _pickle as cPickle
 import fcntl
 import os
 import tempfile

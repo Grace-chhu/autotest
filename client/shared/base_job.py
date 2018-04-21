@@ -1,4 +1,4 @@
-import cPickle as pickle
+import _pickle as cPickle
 import copy
 import errno
 import fcntl
@@ -261,7 +261,7 @@ class job_state(object):
         if os.path.getsize(file_path) == 0:
             on_disk_state = {}
         else:
-            on_disk_state = pickle.load(open(file_path))
+            on_disk_state = cPickle.load(open(file_path, "rb"))
 
         if merge:
             # merge the on-disk state with the in-memory state
@@ -299,9 +299,9 @@ class job_state(object):
                           Must be writable.
         :type file_path: string
         """
-        outfile = open(file_path, 'w')
+        outfile = open(file_path, 'wb')
         try:
-            pickle.dump(self._state, outfile, self.PICKLE_PROTOCOL)
+            cPickle.dump(self._state, outfile, self.PICKLE_PROTOCOL)
         finally:
             outfile.close()
 
